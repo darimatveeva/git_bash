@@ -1,0 +1,35 @@
+Зайти в домашнюю директорию через терминал: cd /d/Тестирование/Курс\ по\ тестированию/ДЗ/git_bash/ (\ используется для экранирования пробелов)
+
+Создать папку test 3: mkdir test3
+Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4: cd test3 => 
+for i in 4 5 6; do
+  echo -e "row1\nrow2\nrow3\nrow4" > $i
+done
+Найдите строку row2 в файле 5: grep "row2" 5
+Найдите строку row в папке test3: cd .. => grep -r "row" test3
+Посчитайте сколько строк с содержимым row в файле 6:  cd test3 => grep -c "row" 6
+Найдите файл 5 внутри папки test3: cd .. => find ./test3 -name "5"
+Используя команду find, удалите файл 5: find . -type f -name "5" -exec rm {} \;
+Используя команду echo, добавьте слово test в файл 4: cd test3 => echo "test" > 4
+Замените слово test в файле 4 на fail: sed -i 's/test/fail/' 4
+Добавьте в файл 4 слово test так, чтобы сохранилось содержимое: echo "test" >> 4
+Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе: ps aux
+Убейте процесс 666 в консоли: kill 666, если не удаляется, необходимо удалить принудительно: kill -9 666
+Узнайте доступность ресурса rusau.net, используя ping: ping rusau.net
+Отправьте 5 пакетов на сайт rusau.net: ping -c 5 rusau.net
+Используя GET и команду curl, получите информацию о зарегистрированных питомцах с любым статусом на https://petstore.swagger.io/: curl https://petstore.swagger.io/v2/pet/findByStatus?status=available
+Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/:
+curl -X 'POST' \
+  'https://petstore.swagger.io/v2/user' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "id": 0,
+    "username": "user",
+    "firstName": "test",
+    "lastName": "test1",
+    "email": "test@test.com",
+    "password": "12345678",
+    "phone": "123456789012",
+    "userStatus": 0
+  }'
